@@ -86,10 +86,10 @@ jobs:
     - name: Create release
       id: create_release
       uses: softprops/action-gh-release@v2
-      draft: true
-      tag_name: v0.0.5-test
-      fail_on_unmatched_files: true
       with:
+        draft: true
+        tag_name: v0.0.5-test
+        fail_on_unmatched_files: true
         files: |
           dist/**
           LICENSE
