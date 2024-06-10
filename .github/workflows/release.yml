@@ -53,18 +53,18 @@ jobs:
       url: https://pypi.org/p/velocitas-lib
 
     permissions:
-      contents: write
       id-token: write
-      packages: read
 
     steps:
     - name: Download dists folder
       uses: actions/download-artifact@v4
       with:
         name: python-package-distributions
-        path: dist/
+        path: python-package/
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
+      with:
+        packages-dir: python-package/dist
 
   github-release:
     name: >-
@@ -75,9 +75,8 @@ jobs:
     runs-on: ubuntu-22.04
 
     permissions:
-      contents: write
       id-token: write
-      packages: read
+      contents: write
 
     steps:
     - name: Download dists folder
@@ -96,7 +95,6 @@ jobs:
       uses: softprops/action-gh-release@v2
       with:
         draft: true
-        tag_name: v0.0.6-test
         fail_on_unmatched_files: true
         files: |
           python-package/dist/**
