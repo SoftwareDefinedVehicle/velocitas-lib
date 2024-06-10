@@ -38,7 +38,10 @@ jobs:
       uses: actions/upload-artifact@v4
       with:
         name: python-package-distributions
-        path: dist/
+        path: |
+          dist/
+          LICENSE
+          NOTICE.md
 
   # publish-to-pypi:
   #   name: Publish Python 🐍 distribution 📦 to PyPI
